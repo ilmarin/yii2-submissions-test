@@ -38,7 +38,10 @@ class Feedback extends ActiveRecord {
                 'skipOnEmpty' => false,
                 'extensions' => 'png, jpg, gif, pdf',
                 'mimeTypes' => 'image/jpeg, image/png, image/gif, application/pdf',
-                'message' => 'Нужен файл'
+                'message' => 'Ошибка загрузки файла',
+                'wrongExtension' => 'Допустимые расширения файла: {extensions}',
+                'wrongMimeType' => 'Допустимые mime-типы файла: {mimeTypes}',
+                'uploadRequired' => 'Файл обязателен',
             ],
         ];
     }
