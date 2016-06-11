@@ -4,7 +4,7 @@ namespace app\models;
 
 use Yii;
 use yii\db\ActiveRecord;
-use yii\helpers\Html;
+use yii\helpers\HtmlPurifier;
 use yii\data\ActiveDataProvider;
 
 /**
@@ -98,6 +98,14 @@ class Feedback extends ActiveRecord {
         $categories = self::feedbackCategories();
 
         return $categories[$id];
+    }
+
+    public function beforeSave($insert) {
+        if (parent::beforeSave($insert)) {
+            $this->content = HtmlPurifier::process($this->content);
+            return true;
+        }
+        return false;
     }
 
 }
